@@ -19,3 +19,36 @@ class TimeStampedModel(models.Model):
 
     class Meta:
         abstract = True
+
+class WaterSource(TimeStampedModel):
+    """ Water Source Model """
+    name = models.CharField(max_length=25)
+    description = models.CharField(max_length=50, blank=True, default='')
+
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+class WaterApplication(TimeStampedModel):
+    """ Water Application Model """
+    name = models.CharField(max_length=25)
+    description = models.CharField(max_length=50, blank=True, default='')
+
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+class Response(TimeStampedModel):
+    """ Response Model """
+    name = models.CharField(max_length=25)
+    description = models.CharField(max_length=50, blank=True, default='')
+
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
