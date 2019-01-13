@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'core.apps.CoreConfig',
     'clients.apps.ClientsConfig',
     'dealers.apps.DealersConfig',
-    'results.apps.ResultsConfig',
     'samples.apps.SamplesConfig',
     'tests.apps.TestsConfig'
 ]
@@ -105,6 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

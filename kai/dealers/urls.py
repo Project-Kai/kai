@@ -17,9 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from dealers.views import  DealerListView, DealerCreateView, DealerDetailView
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^dealers/', include('dealers.urls')),
-    url(r'^clients/', include('clients.urls'))
+    url(
+        regex=r'^$',
+        view=DealerListView.as_view(),
+        name='dealer_list_api'
+    ),
+    url(
+        regex=r'^detail/(?P<uuid>[-\w]+)/$',
+        view=DealerDetailView.as_view(),
+        name='dealer_detail_api'
+    ),
+    url(
+        regex=r'^create/$',
+        view=DealerCreateView.as_view(),
+        name='dealer_create_api'
+    )
 ]

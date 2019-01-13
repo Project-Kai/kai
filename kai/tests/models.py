@@ -10,6 +10,8 @@ class Test(TimeStampedModel):
     test_type = models.ForeignKey('TestType', on_delete=models.CASCADE)
     result = models.FileField(null=True, upload_to='uploads/results/%Y/%m/%d/')
 
+    class Meta:
+        ordering = ('id',)
 
 class TestType(TimeStampedModel):
     """ Test Type Model """

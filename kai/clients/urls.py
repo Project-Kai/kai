@@ -17,9 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from clients.views import  ClientListView, ClientCreateView, ClientDetailView
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^dealers/', include('dealers.urls')),
-    url(r'^clients/', include('clients.urls'))
+    url(
+        regex=r'^$',
+        view=ClientListView.as_view(),
+        name='client_list_api'
+    ),
+    url(
+        regex=r'^detail/(?P<uuid>[-\w]+)/$',
+        view=ClientDetailView.as_view(),
+        name='client_detail_api'
+    ),
+    url(
+        regex=r'^create/$',
+        view=ClientCreateView.as_view(),
+        name='client_create_api'
+    )
 ]
